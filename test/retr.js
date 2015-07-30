@@ -1,4 +1,7 @@
 var common = require('./common');
+var streamEqual = require('stream-equal');
+var fs = require('fs');
+var path = require('path');
 
 describe('RETR command', function () {
   'use strict';
@@ -20,6 +23,7 @@ describe('RETR command', function () {
         var str = '';
         client.get('/data.txt', function (error, socket) {
           common.should.not.exist(error);
+
           socket.on('data', function (data) {
             str += data.toString();
           }).on('close', function (error) {
@@ -27,6 +31,18 @@ describe('RETR command', function () {
             str.should.eql('hola!');
             done();
           }).resume();
+        });
+      });
+
+      it('should success with large file', function (done) {
+        client.get('/bigdata.txt', function (error, socket) {
+          common.should.not.exist(error);
+
+          var realFile = fs.createReadStream(path.join(__dirname, '..', 'fixture', 'jose', 'bigdata.txt'));
+          streamEqual(socket, realFile, function(err, equal) {
+            equal.should.eql(true);
+            done(err);
+          });
         });
       });
 
