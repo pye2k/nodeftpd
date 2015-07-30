@@ -1,5 +1,4 @@
 var common = require('./common');
-var streamEqual = require('stream-equal');
 var fs = require('fs');
 var path = require('path');
 

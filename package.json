@@ -65,7 +65,6 @@
     "istanbul": "~0.2.4",
     "jsftp": "git://github.com/sergi/jsftp.git#master",
     "mocha": "~1.17.1",
-    "should": "~3.1.2",
-    "stream-equal": "^0.1.5"
+    "should": "~3.1.2"
   }
 }
