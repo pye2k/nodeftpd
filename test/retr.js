@@ -34,20 +34,6 @@ describe('RETR command', function () {
         });
       });
 
-      it('should success with large file', function (done) {
-        this.timeout(15000);
-
-        client.get('/bigdata.txt', function (error, socket) {
-          common.should.not.exist(error);
-
-          var realFile = fs.createReadStream(path.join(__dirname, '..', 'fixture', 'jose', 'bigdata.txt'));
-          streamEqual(socket, realFile, function(err, equal) {
-            equal.should.eql(true);
-            done(err);
-          });
-        });
-      });
-
       it('should fail when file not found', function (done) {
         client.get('/bad.file', function (error, socket) {
           common.should.exist(error);
