@@ -35,7 +35,7 @@ describe('RETR command', function () {
       });
 
       it('should success with large file', function (done) {
-        this.timeout(5000);
+        this.timeout(15000);
 
         client.get('/bigdata.txt', function (error, socket) {
           common.should.not.exist(error);
