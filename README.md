@@ -164,6 +164,8 @@ The user is not able to escape this directory.
     - Integer, specifies the lower-bound port (min port) for creating PASV connections
 - `pasvPortRangeEnd`: _(default: random?)_
     - Integer, specifies the upper-bound port (max port) for creating PASV connections
+- `commandBlacklist`: _(default: undefined)_
+    - List of strings, the server will respond to any commands contained in this list with a 502 unimplemented error.
 
 
 ## Filesystem Abstraction
